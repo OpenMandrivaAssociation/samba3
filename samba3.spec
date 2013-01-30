@@ -241,7 +241,7 @@ Source4: swat_48.png
 Source5: swat_32.png
 Source6: swat_16.png
 Source7: README.%{name}-rosa-rpm
-Source8: https://github.com/downloads/fumiyas/samba-virusfilter/samba-virusfilter-%{vscanver}.tar.bz2
+Source8: https://bitbucket.org/fumiyas/samba-virusfilter/downloads/samba-virusfilter-%{vscanver}.tar.bz2
 %if %build_vscan
 %endif
 %if %build_vscan
