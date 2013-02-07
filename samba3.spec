@@ -307,9 +307,9 @@ BuildRequires: mysql-devel
 BuildRequires: acl-devel
 %endif
 BuildRequires: cups-devel cups-common
-BuildRequires: libldap-devel
+BuildRequires: openldap-devel
 %if %build_ads
-BuildRequires: libldap-devel krb5-devel
+BuildRequires: openldap-devel krb5-devel
 %endif
 BuildRequires: keyutils-devel
 %if !%build_tdb
