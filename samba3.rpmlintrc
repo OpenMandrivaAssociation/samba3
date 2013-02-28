@@ -1,0 +1,4 @@
+# False positives
+addFilter("E: incoherent-version-in-name")
+# Intentional
+addFilter("E: non-standard-dir-perm")

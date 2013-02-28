@@ -263,6 +263,7 @@ Source28:	samba.pamd0_9
 Source29:	system-auth-winbind.pamd
 Source30:	smb.conf
 
+Source100:	%name.rpmlintrc
 
 %if !%have_pversion
 # Version specific patches: current version
