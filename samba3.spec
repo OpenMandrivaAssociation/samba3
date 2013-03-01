@@ -371,12 +371,12 @@ Requires(pre):		rpm-helper
 %endif
 Group: Networking/Other
 %if %build_system
-Provides: samba
-Obsoletes: samba
-Provides:  samba-server-ldap
-Obsoletes: samba-server-ldap
-Provides:  samba3-server
-Obsoletes: samba3-server
+Provides: samba = %EVRD
+Obsoletes: samba < %EVRD
+Provides:  samba-server-ldap = %EVRD
+Obsoletes: samba-server-ldap < %EVRD
+Provides:  samba-server = %EVRD
+Obsoletes: samba-server < %EVRD
 %else
 #Provides: samba-server
 %endif
@@ -417,14 +417,14 @@ Requires: cifs-utils >= 4.4
 #Conflicts:	samba-client < 2.2.8a-9mdk
 %endif
 %if %build_system
-Provides:  samba3-client
-Obsoletes: samba3-client
+Provides:  samba-client = %EVRD
+Obsoletes: samba-client < %EVRD
 Obsoletes: smbfs
 %else
 #Provides: samba-client
 %endif
 %if !%build_system && %build_alternatives
-Provides: samba-client
+Provides: samba-client = %EVRD
 %endif
 
 %description client
@@ -442,14 +442,11 @@ printing to SMB printers.
 URL:	http://www.samba.org
 Summary: Files used by both Samba servers and clients
 Group: System/Servers
-Conflicts: %{name}-server < 3.6.6-2
 %if %build_system
-Provides:  samba-common-ldap
-Obsoletes: samba-common-ldap
-Provides:  samba3-common
-Obsoletes: samba3-common
-%else
-#Provides: samba-common
+Provides:  samba-common-ldap = %EVRD
+Obsoletes: samba-common-ldap < %EVRD
+Provides:  samba-common = %EVRD
+Obsoletes: samba-common < %EVRD
 %endif
 
 %description common
@@ -469,8 +466,8 @@ Group: System/Servers
 Requires: %{name}-common = %{version}
 BuildArch: noarch
 %if %build_system
-Obsoletes: samba3-doc
-Provides:  samba3-doc
+Obsoletes: samba-doc < %EVRD
+Provides:  samba-doc = %EVRD
 %else
 #Provides: samba-doc
 %endif
@@ -488,18 +485,17 @@ packages of Samba.
 %package swat
 URL:	http://www.samba.org
 Summary: The Samba Web Administration Tool
-Requires: %{name}-server = %{version}
+Requires: %{name}-server = %EVRD
 Requires: xinetd
 Group: System/Servers
 %if %build_system
-Provides:  samba-swat-ldap
-Obsoletes: samba-swat-ldap
-Provides:  samba3-swat
-Obsoletes: samba3-swat
+Provides:  samba-swat-ldap = %EVRD
+Obsoletes: samba-swat-ldap < %EVRD
+Provides:  samba3-swat = %EVRD
+Obsoletes: samba3-swat < %EVRD
 %else
 #Provides: samba-swat
 %endif
-Conflicts: %{name}-server < 3.4.0
 Suggests: %{name}-doc
 
 %description swat
@@ -568,15 +564,15 @@ IP addresses.
 URL:	http://www.samba.org
 Summary: Debugging and benchmarking tools for samba
 Group: System/Servers
-Requires: %{name}-common = %{version}
+Requires: %{name}-common = %EVRD
 %endif
 %if %build_system && %build_test
-Provides:  samba3-test samba3-debug
-Obsoletes: samba3-test samba3-debug
+Provides:  samba-test = %EVRD samba3-debug = %EVRD
+Obsoletes: samba-test < %EVRD samba3-debug < %EVRD
 %endif
 %if !%build_system && %{build_test}
-Provides: samba-test samba3-debug
-Obsoletes: samba3-debug
+Provides: samba-test = %EVRD samba3-debug = %EVRD
+Obsoletes: samba3-debug < %EVRD
 %endif
 %if %{build_test}
 
@@ -740,13 +736,13 @@ Library providing access to winbindd
 URL:		http://www.samba.org
 Summary:	Samba password database plugin for MySQL
 Group:		System/Libraries
-Requires:	%{name}-server = %{version}-%{release}
+Requires:	%{name}-server = %EVRD
 %endif
 %endif
 %ifnarch alpha
 %if %build_system && %{build_mysql}
-Obsoletes:	samba3-passdb-mysql 
-Provides:	samba3-passdb-mysql 
+Obsoletes:	samba3-passdb-mysql < %EVRD
+Provides:	samba3-passdb-mysql = %EVRD
 %endif
 %endif
 %ifnarch alpha
@@ -766,13 +762,13 @@ database
 URL:		http://www.samba.org
 Summary:	Samba password database plugin for PostgreSQL
 Group:		System/Libraries
-Requires:	%{name}-server = %{version}-%{release}
+Requires:	%{name}-server = %EVRD
 #endif
 #ifnarch alpha && %build_system
 %endif
 %if %build_system && %{build_pgsql}
-Obsoletes:	samba3-passdb-pgsql
-Provides:	samba3-passdb-pgsql
+Obsoletes:	samba3-passdb-pgsql < %EVRD
+Provides:	samba3-passdb-pgsql = %EVRD
 %endif
 %if %{build_pgsql}
 
@@ -787,7 +783,7 @@ database
 %package vscan-antivir
 Summary: On-access virus scanning for samba using Antivir
 Group: System/Servers
-Requires: %{name}-server = %{version}
+Requires: %{name}-server = %EVRD
 Provides: %{name}-vscan
 %description vscan-antivir
 A vfs-module for samba to implement on-access scanning using the
@@ -800,7 +796,7 @@ Antivir antivirus scanner daemon.
 Summary: On-access virus scanning for samba using Clam Antivirus
 Group: System/Servers
 URL: https://github.com/fumiyas/samba-virusfilter
-Requires: %{name}-server = %{version}
+Requires: %{name}-server = %EVRD
 Provides: %{name}-vscan
 Provides: %{name}-virusfilter
 Requires: clamd
@@ -817,7 +813,7 @@ This package includes the VFS module supporting:
 %package vscan-fprot
 Summary: On-access virus scanning for samba using FPROT
 Group: System/Servers
-Requires: %{name}-server = %{version}
+Requires: %{name}-server = %EVRD
 Provides: %{name}-vscan
 %description vscan-fprot
 A vfs-module for samba to implement on-access scanning using the
@@ -829,7 +825,7 @@ FPROT antivirus software (which must be installed to use this).
 Summary: On-access virus scanning for samba using F-Secure
 Group: System/Servers
 URL: https://github.com/fumiyas/samba-virusfilter
-Requires: %{name}-server = %{version}
+Requires: %{name}-server = %EVRD
 Provides: %{name}-vscan
 Provides: %{name}-virusfilter
 %description virusfilter-fsecure
@@ -845,7 +841,7 @@ This package provides the VFS module supporting:
 %package vscan-icap
 Summary: On-access virus scanning for samba using ICAP
 Group: System/Servers
-Requires: %{name}-server = %{version}
+Requires: %{name}-server = %EVRD
 Provides: %{name}-icap
 %description vscan-icap
 A vfs-module for samba to implement on-access scanning using
@@ -856,7 +852,7 @@ ICAP-capable antivirus software.
 %package vscan-kaspersky
 Summary: On-access virus scanning for samba using Kaspersky
 Group: System/Servers
-Requires: %{name}-server = %{version}
+Requires: %{name}-server = %EVRD
 Provides: %{name}-vscan
 %description vscan-kaspersky
 A vfs-module for samba to implement on-access scanning using the
@@ -867,7 +863,7 @@ Kaspersky antivirus software (which must be installed to use this).
 %package vscan-mks
 Summary: On-access virus scanning for samba using MKS
 Group: System/Servers
-Requires: %{name}-server = %{version}
+Requires: %{name}-server = %EVRD
 Provides: %{name}-vscan
 %description vscan-mks
 A vfs-module for samba to implement on-access scanning using the
@@ -878,7 +874,7 @@ MKS antivirus software (which must be installed to use this).
 %package vscan-nai
 Summary: On-access virus scanning for samba using NAI McAfee
 Group: System/Servers
-Requires: %{name}-server = %{version}
+Requires: %{name}-server = %EVRD
 Provides: %{name}-vscan
 %description vscan-nai
 A vfs-module for samba to implement on-access scanning using the
@@ -889,7 +885,7 @@ NAI McAfee antivirus software (which must be installed to use this).
 %package vscan-openav
 Summary: On-access virus scanning for samba using OpenAntivirus
 Group: System/Servers
-Requires: %{name}-server = %{version}
+Requires: %{name}-server = %EVRD
 Provides: %{name}-vscan
 %description vscan-openav
 A vfs-module for samba to implement on-access scanning using the
@@ -901,7 +897,7 @@ OpenAntivirus antivirus software (which must be installed to use this).
 Summary: On-access virus scanning for samba using Sophos
 Group: System/Servers
 URL: https://github.com/fumiyas/samba-virusfilter
-Requires: %{name}-server = %{version}
+Requires: %{name}-server = %EVRD
 Provides: %{name}-vscan
 %description virusfilter-sophos
 This is a Samba VFS module to scan and filter virus files on Samba file
@@ -915,7 +911,7 @@ This package includes the VFS module supporting:
 %package vscan-symantec
 Summary: On-access virus scanning for samba using Symantec
 Group: System/Servers
-Requires: %{name}-server = %{version}
+Requires: %{name}-server = %EVRD
 Provides: %{name}-vscan
 Autoreq: 0
 %description vscan-symantec
@@ -928,8 +924,8 @@ Symantec antivirus software (which must be installed to use this).
 %package vscan-trend
 Summary: On-access virus scanning for samba using Trend
 Group: System/Servers
-Requires: %{name}-server = %{version}
-Provides: %{name}-vscan
+Requires: %{name}-server = %EVRD
+Provides: %{name}-vscan = %EVRD
 %description vscan-trend
 A vfs-module for samba to implement on-access scanning using the
 Trend antivirus software (which must be installed to use this).
@@ -937,7 +933,7 @@ Trend antivirus software (which must be installed to use this).
 
 %package domainjoin-gui
 Summary: Domainjoin GUI
-Requires: samba-common = %{version}
+Requires: %name-common = %EVRD
 Group: System/Configuration/Other
 
 %description domainjoin-gui
