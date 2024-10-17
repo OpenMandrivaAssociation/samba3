@@ -234,7 +234,7 @@ Group: System/Servers
 Source0: http://ftp.samba.org/pub/samba/stable/samba-%{source_ver}.tar.gz
 Source99: http://ftp.samba.org/pub/samba/stable/samba-%{source_ver}.tar.asc
 Source98: http://ftp.samba.org/pub/samba/samba-pubkey.asc
-URL:	http://www.samba.org
+URL:	https://www.samba.org
 Source1: samba.log
 Source3: samba.xinetd
 Source4: swat_48.png
@@ -362,7 +362,7 @@ more information.
 %endif
 
 %package server
-URL:	http://www.samba.org
+URL:	https://www.samba.org
 Summary: Samba (SMB) server programs
 Requires: %{name}-common = %{version}
 Requires: %libwbclient >= %{version}
@@ -408,7 +408,7 @@ docs directory for implementation details.
 %endif
 
 %package client
-URL:	http://www.samba.org
+URL:	https://www.samba.org
 Summary: Samba (SMB) client programs
 Group: Networking/Other
 Requires: %{name}-common = %{version}
@@ -439,7 +439,7 @@ printing to SMB printers.
 %endif
 
 %package common
-URL:	http://www.samba.org
+URL:	https://www.samba.org
 Summary: Files used by both Samba servers and clients
 Group: System/Servers
 %if %build_system
@@ -460,7 +460,7 @@ packages of Samba.
 %endif
 
 %package doc
-URL:	http://www.samba.org
+URL:	https://www.samba.org
 Summary: Documentation for Samba servers and clients
 Group: System/Servers
 Requires: %{name}-common = %{version}
@@ -483,7 +483,7 @@ packages of Samba.
 %endif
 
 %package swat
-URL:	http://www.samba.org
+URL:	https://www.samba.org
 Summary: The Samba Web Administration Tool
 Requires: %{name}-server = %EVRD
 Requires: xinetd
@@ -516,7 +516,7 @@ Samba.
 
 %if %build_winbind
 %package winbind
-URL:	http://www.samba.org
+URL:	https://www.samba.org
 Summary: Samba-winbind daemon, utilities and documentation
 Group: System/Servers
 Requires: %{name}-common = %{version}
@@ -538,7 +538,7 @@ and group/user enumeration from a Windows or Samba domain controller.
 
 %if %build_wins
 %package -n nss_wins%{samba_major}
-URL:	http://www.samba.org
+URL:	https://www.samba.org
 Summary: Name Service Switch service for WINS
 Group: System/Servers
 Requires: %{name}-common = %{version}
@@ -561,7 +561,7 @@ IP addresses.
 
 %if %build_test
 %package test
-URL:	http://www.samba.org
+URL:	https://www.samba.org
 Summary: Debugging and benchmarking tools for samba
 Group: System/Servers
 Requires: %{name}-common = %EVRD
@@ -583,7 +583,7 @@ the correct operation of tools against smb servers.
 
 %if %build_system
 %package -n %{libname}
-URL:		http://www.samba.org
+URL:		https://www.samba.org
 Summary: 	SMB Client Library
 Group:		System/Libraries
 Provides:	libsmbclient
@@ -599,7 +599,7 @@ SMB shares.
 
 %if %build_system
 %package -n %{libname}-devel
-URL:		http://www.samba.org
+URL:		https://www.samba.org
 Summary: 	SMB Client Library Development files
 Group:		Development/C
 Provides:	libsmbclient-devel = %{version}-%{release}
@@ -616,7 +616,7 @@ the development of other software to access SMB shares.
 
 %if %build_system
 %package -n %{libname}-static-devel
-URL:            http://www.samba.org
+URL:            https://www.samba.org
 Summary:        SMB Client Static Library Development files
 Group:          Development/C
 Provides:       libsmbclient-static-devel = %{version}-%{release}
@@ -733,7 +733,7 @@ Library providing access to winbindd
 %ifnarch alpha
 %if %{build_mysql}
 %package passdb-mysql
-URL:		http://www.samba.org
+URL:		https://www.samba.org
 Summary:	Samba password database plugin for MySQL
 Group:		System/Libraries
 Requires:	%{name}-server = %EVRD
@@ -759,7 +759,7 @@ database
 #ifnarch alpha
 %if %{build_pgsql}
 %package passdb-pgsql
-URL:		http://www.samba.org
+URL:		https://www.samba.org
 Summary:	Samba password database plugin for PostgreSQL
 Group:		System/Libraries
 Requires:	%{name}-server = %EVRD
