@@ -245,6 +245,11 @@ Source8: https://bitbucket.org/fumiyas/samba-virusfilter/downloads/samba-virusfi
 %if %build_vscan
 %endif
 %if %build_vscan
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires: magic-devel
 %endif
 Source10: samba-print-pdf.sh
